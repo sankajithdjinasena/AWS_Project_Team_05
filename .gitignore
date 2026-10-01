@@ -1,0 +1,45 @@
+# Python Bytecode & Cache Files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE & Text Editor Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment Variables & Secrets (Prevent accidental AWS Credential leaks)
+.env
+.env.local
+secrets.json
+*.pem
+*.key
+credentials
+
+# Temporary Files & Logs
+*.log
+*.tmp
+temp/
+scratch/
+
+
+docs/
