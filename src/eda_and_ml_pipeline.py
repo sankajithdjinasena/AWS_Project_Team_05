@@ -37,7 +37,7 @@ OS_OUTPUT_DIR = os.path.join("output", "visualizations")
 os.makedirs(OS_OUTPUT_DIR, exist_ok=True)
 os.makedirs("data", exist_ok=True)
 
-def load_and_validate_data(filepath="data/Telco_Customer_Churn.csv"):
+def load_and_validate_data(filepath="./data/Telco_Customer_Churn.csv"):
     print("=" * 60)
     print("STEP 1: DATA LOADING & QUALITY VALIDATION")
     print("=" * 60)
@@ -77,7 +77,7 @@ def generate_visualizations(df):
     # Visualization 1: Churn Rate by Contract Type
     plt.figure(figsize=(8, 5))
     ax1 = sns.countplot(data=df, x='Contract', hue='Churn', palette=['#2ca02c', '#d62728'])
-    plt.title('Figure 1: Customer Churn Distribution by Contract Type', fontsize=14, fontweight='bold', pad=15)
+    plt.title('Customer Churn Distribution by Contract Type', fontsize=14, fontweight='bold', pad=15)
     plt.xlabel('Contract Type', fontsize=12)
     plt.ylabel('Customer Count', fontsize=12)
     for p in ax1.patches:
@@ -95,7 +95,7 @@ def generate_visualizations(df):
     plt.figure(figsize=(9, 5))
     sns.kdeplot(data=df[df['Churn'] == 'No']['tenure'], label='Retained (No Churn)', color='#2ca02c', fill=True, alpha=0.4)
     sns.kdeplot(data=df[df['Churn'] == 'Yes']['tenure'], label='Churned (Yes)', color='#d62728', fill=True, alpha=0.4)
-    plt.title('Figure 2: Tenure Density Distribution by Churn Status', fontsize=14, fontweight='bold', pad=15)
+    plt.title('Tenure Density Distribution by Churn Status', fontsize=14, fontweight='bold', pad=15)
     plt.xlabel('Tenure (Months)', fontsize=12)
     plt.ylabel('Density', fontsize=12)
     plt.legend(title='Customer Status')
@@ -108,7 +108,7 @@ def generate_visualizations(df):
     # Visualization 3: Monthly Charges Distribution by Churn Status
     plt.figure(figsize=(8, 5))
     sns.boxplot(data=df, x='Churn', y='MonthlyCharges', hue='Churn', palette=['#2ca02c', '#d62728'], legend=False)
-    plt.title('Figure 3: Monthly Charges Breakdown by Churn Status', fontsize=14, fontweight='bold', pad=15)
+    plt.title('Monthly Charges Breakdown by Churn Status', fontsize=14, fontweight='bold', pad=15)
     plt.xlabel('Churn Status', fontsize=12)
     plt.ylabel('Monthly Charges ($)', fontsize=12)
     plt.tight_layout()
@@ -120,7 +120,7 @@ def generate_visualizations(df):
     # Visualization 4: Churn Rate by Internet Service and Tech Support
     plt.figure(figsize=(10, 5))
     sns.barplot(data=df, x='InternetService', y=(df['Churn'] == 'Yes').astype(int), hue='TechSupport', palette='Set2', errorbar=None)
-    plt.title('Figure 4: Churn Rate by Internet Service & Tech Support Availability', fontsize=14, fontweight='bold', pad=15)
+    plt.title('Churn Rate by Internet Service & Tech Support Availability', fontsize=14, fontweight='bold', pad=15)
     plt.xlabel('Internet Service Provider Type', fontsize=12)
     plt.ylabel('Churn Rate (Ratio)', fontsize=12)
     plt.legend(title='Tech Support')
@@ -222,7 +222,7 @@ def preprocess_and_train(df):
     # Plot Top 10 Feature Importances
     plt.figure(figsize=(9, 5))
     rf_importances.head(10).plot(kind='barh', color='#1f77b4').invert_yaxis()
-    plt.title('Figure 5: Top 10 Customer Churn Predictors (Feature Importance)', fontsize=14, fontweight='bold', pad=15)
+    plt.title('Top 10 Customer Churn Predictors (Feature Importance)', fontsize=14, fontweight='bold', pad=15)
     plt.xlabel('Relative Feature Importance Score', fontsize=12)
     plt.tight_layout()
     fig5_path = os.path.join(OS_OUTPUT_DIR, "viz5_feature_importance.png")
